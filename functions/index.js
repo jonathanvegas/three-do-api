@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.length('/tasks', getTasks);
+app.get('/tasks', getTasks);
 app.post('/tasks', createTask);
 app.patch('/tasks/:taskId', updateTask);
 app.delete('/task/:taskId', deleteTask);

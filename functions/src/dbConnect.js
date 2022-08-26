@@ -3,6 +3,7 @@ import { getFirestore } from "firebase-admin/firestore";
 import { credentials } from "../credentials.js";
 
 export default function dbConnect () {
+  // returns an array of all of the Firebase (e.g. Firestor)nthat we are connected to
   if (!getApps().length){
     initializeApp({
       credential: cert(credentials)

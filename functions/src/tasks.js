@@ -26,13 +26,17 @@ export async function createTask(req,res) { //later we will add user id and time
   getTasks(req, res); //send back the full list of tasks... 
 }
 
-export function updateTask(req,res) {
+export async function updateTask(req,res) {
   const taskUpdate = req.body;
   const { taskId } = rep.params;
-  res.status(201).send('Task Updated');
+  const db = dbConnect();
+  await db.collection('tasks').doc(task.Id).update(taskUpdate)
+    .catch(err => res.status(500).send(err));
+  res.status(202).send('Task Updated');
+  getTasks(req,res);
 }
 
 export function deleteTask(req,res) {  
   const { taskId } = rep.params;
-  res.status(201).send('Task Deleted');
+  res.status(203).send('Task Deleted');
 }
